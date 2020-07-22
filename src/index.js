@@ -1,17 +1,51 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import {render} from 'react-dom';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import './index.css'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+import {ThemeProvider} from '@material-ui/core/styles'
+import ApiProvider from './context/ApiContext';
+import theme from './css_theme/themeConfig'
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+
+import Main from "./layouts/Main";
+
+import Principal from './pages/Principal';
+import Personajes from './pages/Personajes';
+import Personaje from './pages/Personaje';
+import Episodios from './pages/Episodios';
+
+
+function App() {
+  return (
+    <BrowserRouter>  
+      <ApiProvider>
+        <ThemeProvider theme={theme}>
+          <Switch>
+            <RouteWrapper exact path="/" component={Principal} layout={Main} />
+            <RouteWrapper exact path="/personajes" component={Personajes} layout={Main} />
+            <RouteWrapper exact path="/personajes/:pagina" component={Personajes} layout={Main} />
+            <RouteWrapper exact path="/personaje/:id" component={Personaje} layout={Main} />
+            <RouteWrapper exact path="/capitulos" component={Episodios} layout={Main} />
+          </Switch>
+        </ThemeProvider>
+      </ApiProvider>
+    </BrowserRouter>
+  );
+}
+
+function RouteWrapper({
+  component: Component, 
+  layout: Layout, 
+  ...rest
+}) {
+  return (
+    <Route {...rest} render={(props) =>
+      <Layout {...props}>
+        <Component {...props} />
+      </Layout>
+    } />
+  );
+}
+
+render(<App />, document.getElementById('root'));
