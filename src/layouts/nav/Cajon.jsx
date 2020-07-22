@@ -17,6 +17,9 @@ const estilos = makeStyles(theme => ({
     toolbar: theme.mixins.toolbar
 }))
 
+// cajon del menú que es visible o invisible dependiendo el dispositivo.
+
+
 const Cajon = ({variant, open, onClose}) => {
 
     const classes = estilos()

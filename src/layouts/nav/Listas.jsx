@@ -9,6 +9,8 @@ import {
 import ContactsIcon from '@material-ui/icons/Contacts';
 import ListAltIcon from '@material-ui/icons/ListAlt';
 
+// Secciones y rutas del menu
+
 const Listas = () => {
     return (
         <div>

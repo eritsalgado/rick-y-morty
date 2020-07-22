@@ -32,6 +32,8 @@ const estilos = makeStyles(theme => ({
     }
 }))
 
+// Maquetación de los pocos datos proporcionados por la API para cada personaje especifico
+
 const Personaje = () => {
     const { personaje, getPersonaje } = useContext(ApiContext)
     let { id } = useParams();

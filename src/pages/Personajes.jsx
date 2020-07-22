@@ -11,11 +11,15 @@ import ListaPersonajes from '../components/Listas/ListaPersonajes'
 import Paginacion from '../components/Paginacion'
 
 const Personajes = () => {
+    // Obteniendo variables y funciones del context padre
     const { data_pagina, getPaginaDePersonajes } = useContext(ApiContext)
 
+    //Funcion para ejecutar funcion proveniente del context padre
     const buscarPagina = (pagina) => {
         getPaginaDePersonajes(pagina)
     }
+
+    // UseEffect, reemplaza a document.ready y didMount, al cargar la página ejecuta una función
     useEffect(()=>{
         getPaginaDePersonajes(1)
     },[])
@@ -35,6 +39,7 @@ const Personajes = () => {
             </Grid>
             <Grid item xs={12}>
                 <Box align="center">
+                    {/* Se llama a un componente que obtendrá una lista, se le proporciona datos para su correcto funcionamiento */}
                     <Paginacion
                         data_pagina={data_pagina}
                         buscarPagina={buscarPagina}

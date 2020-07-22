@@ -25,17 +25,20 @@ function App() {
   return (
     // Se definen las rutas permitidas
     <BrowserRouter>  
+      {/* Envuelvo a todas mis páginas con el context padre de mi API para utilizar en cualquier script hijo */}
       <ApiProvider>
+        {/* Aplicando estilos css tematico */}
         <ThemeProvider theme={theme}>
           <Switch>
 
+            {/* Rutas disponibles */}
             <RouteWrapper exact path="/" component={Principal} layout={Main} />
             <RouteWrapper exact path="/personajes" component={Personajes} layout={Main} />
             <RouteWrapper exact path="/personajes/:pagina" component={Personajes} layout={Main} />
             <RouteWrapper exact path="/personaje/:id" component={Personaje} layout={Main} />
             <RouteWrapper exact path="/capitulos" component={Episodios} layout={Main} />
             
-
+            {/* Pagina 404 */}
             <RouteWrapper component={Error} layout={Main} />
             
           </Switch>

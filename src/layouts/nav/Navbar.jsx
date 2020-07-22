@@ -23,6 +23,8 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
+// Barra superior, visible en cualquier dispositivo
+
 const Navbar = ({accionAbrir}) => {
 
     const classes = useStyles()

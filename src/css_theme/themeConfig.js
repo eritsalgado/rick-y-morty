@@ -4,6 +4,7 @@ import teal from '@material-ui/core/colors/teal'
 
 
 const theme = createMuiTheme({
+    // Determino la paleta de colores a utilizar.
     palette:{
         primary: {
             light: cyan[50],

@@ -5,6 +5,7 @@ import {
     makeStyles, Hidden
 } from '@material-ui/core'
 
+// Creo estilos custom con material ui
 const estilos = makeStyles(theme => ({
     root: {
         display:'flex',
@@ -18,8 +19,8 @@ const estilos = makeStyles(theme => ({
 const Contenedor = ({children}) => {
 
     const classes = estilos()
+    // Creo state necesario para el funcionamiento de mi menú en dispositivos moviles
     const [abrir, setAbrir] = useState(false)
-
     const accionAbrir = () => {
         setAbrir(!abrir)
     }
@@ -30,12 +31,15 @@ const Contenedor = ({children}) => {
             <Navbar
                 accionAbrir={accionAbrir}
             />
+            {/* Un menu es visible en dispositivos superiores a los moviles */}
             <Hidden xsDown>
                 <Cajon 
                     variant='permanent'
                     open={true}
                 />
             </Hidden>
+            {/* El segundo menu es invisible en dispositivos moviles, pero tiene 
+            la posibilidad de aparecer con los nuevos atributos proporcionados */}
             <Hidden smUp>
                 <Cajon 
                     variant='temporary'
@@ -43,6 +47,10 @@ const Contenedor = ({children}) => {
                     onClose={accionAbrir}
                 />
             </Hidden>
+
+            {/* A través de index, se pasa el layout que es todo este script, 
+            tambien se pasa un componente, que es el cual se "usa" en la siguiente linea, 
+            children sería el componente deseado. */}
             <div className={content}>
                 <div className={toolbar}></div>
                 {children}
