@@ -4,7 +4,7 @@ import Pagination from '@material-ui/lab/Pagination';
 import PaginationItem from '@material-ui/lab/PaginationItem';
 import {useParams} from 'react-router-dom'
 
-const Paginacion = ({data_pagina, buscarPagina}) => {
+const Paginacion = ({buscarPagina}) => {
     
     let { pagina } = useParams();
 
